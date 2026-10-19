@@ -1,0 +1,154 @@
+[
+  {
+    "tag": "first_run",
+    "time": "2026-10-15T02:40:45",
+    "n_test": 10229,
+    "n_test_ramp": 344,
+    "n_calib": 11031,
+    "n_calib_ramp": 285,
+    "ramp_kw": 5.0,
+    "horizon_min": 15,
+    "models": {
+      "persistence": {
+        "rmse_all": 2.1037224223134046,
+        "rmse_ramp": 9.175649798764997,
+        "rmse_nonramp": 1.2844235008070561,
+        "rmse_calib": 1.7221296010259317
+      },
+      "smart_persistence": {
+        "rmse_all": 1.879775641233205,
+        "rmse_ramp": 9.05289257423836,
+        "rmse_nonramp": 0.8969275855208533,
+        "rmse_calib": 1.4838867026690452
+      },
+      "lgbm_pv": {
+        "rmse_all": 1.673682732857208,
+        "rmse_ramp": 6.388109883500544,
+        "rmse_nonramp": 1.2159654014462504,
+        "rmse_calib": 1.5618780944504778
+      },
+      "nn_pv": {
+        "rmse_all": 1.5975535789533635,
+        "rmse_ramp": 6.3133767131911105,
+        "rmse_nonramp": 1.1197776637147638,
+        "rmse_calib": 1.5250248182187573
+      },
+      "lgbm_pv_img": {
+        "rmse_all": 1.5818917051992143,
+        "rmse_ramp": 5.4067980572992775,
+        "rmse_nonramp": 1.253847773873422,
+        "rmse_calib": 1.536046344642035
+      },
+      "cnn_img_pv": {
+        "rmse_all": 1.5513434480970327,
+        "rmse_ramp": 6.036969037743811,
+        "rmse_nonramp": 1.1054979735021335,
+        "rmse_calib": 1.4263744102182345
+      },
+      "cnn_img_only": {
+        "rmse_all": 1.9071484545441013,
+        "rmse_ramp": 8.720188282459308,
+        "rmse_nonramp": 1.0571305861216527,
+        "rmse_calib": 1.4945655736051866
+      }
+    },
+    "chosen_on_calib": {
+      "pv_only": "smart_persistence",
+      "img_plus_pv": "cnn_img_pv"
+    },
+    "claim_A": {
+      "best_pv_only": "smart_persistence",
+      "best_img_plus_pv": "cnn_img_pv",
+      "ramp_rmse_pv_only": 9.05289257423836,
+      "ramp_rmse_img_plus_pv": 6.036969037743811,
+      "rel_gain": 0.3331447392932624,
+      "ci95": [
+        0.2701095368077662,
+        0.43929525979686374
+      ],
+      "rel_gain_nonramp": -0.2325387147727893,
+      "rel_gain_all": 0.17471882597686395,
+      "threshold": 0.05,
+      "pass": true
+    },
+    "claim_B": {
+      "variants": {
+        "img_plus_pv/plain": {
+          "coverage_all": 0.8638185550884739,
+          "coverage_ramp": 0.13953488372093023,
+          "coverage_nonramp": 0.8890237733940314,
+          "mean_width_kw": 2.0022692051564412,
+          "mean_width_ramp_kw": 2.002269205156441
+        },
+        "img_plus_pv/normalized": {
+          "coverage_all": 0.8661648254961384,
+          "coverage_ramp": 0.4011627906976744,
+          "coverage_nonramp": 0.8823469903894791,
+          "mean_width_kw": 1.83812110402476,
+          "mean_width_ramp_kw": 5.940066323160599
+        },
+        "pv_only/plain": {
+          "coverage_all": 0.8695864698406491,
+          "coverage_ramp": 0.0,
+          "coverage_nonramp": 0.8998482549317147,
+          "mean_width_kw": 2.4204345506940816,
+          "mean_width_ramp_kw": 2.4204345506940816
+        },
+        "pv_only/normalized": {
+          "coverage_all": 0.8898230521067553,
+          "coverage_ramp": 0.09883720930232558,
+          "coverage_nonramp": 0.9173495194739504,
+          "mean_width_kw": 2.6954757645275573,
+          "mean_width_ramp_kw": 8.710690921673914
+        }
+      },
+      "tested_variant": "img_plus_pv/plain",
+      "band": [
+        0.87,
+        0.93
+      ],
+      "ramp_min": 0.8,
+      "pass": false
+    },
+    "verdict": "PARTIAL"
+  },
+  {
+    "tag": "fix1_learned_scale",
+    "time": "2026-10-15T02:41:24",
+    "claim_B": {
+      "variant": "img_plus_pv/learned_scale",
+      "coverage_all": 0.8295043503763809,
+      "coverage_ramp": 0.5290697674418605,
+      "coverage_nonramp": 0.8399595346484573,
+      "mean_width_kw": 1.9842563225587002,
+      "mean_width_ramp_kw": 8.295749038995984,
+      "n_calib_halfB": 5607,
+      "band": [
+        0.87,
+        0.93
+      ],
+      "ramp_min": 0.8,
+      "pass": false
+    }
+  },
+  {
+    "tag": "fix2_oof_scale_all_calib_days",
+    "time": "2026-10-15T02:41:52",
+    "claim_B": {
+      "variant": "img_plus_pv/learned_scale_oof",
+      "coverage_all": 0.8667513930980546,
+      "coverage_ramp": 0.6511627906976745,
+      "coverage_nonramp": 0.8742539200809307,
+      "mean_width_kw": 2.214757687293943,
+      "mean_width_ramp_kw": 11.846776931853045,
+      "n_calib": 11031,
+      "n_calib_days": 15,
+      "band": [
+        0.87,
+        0.93
+      ],
+      "ramp_min": 0.8,
+      "pass": false
+    }
+  }
+]

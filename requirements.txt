@@ -1,0 +1,9 @@
+numpy
+pandas
+scikit-learn
+lightgbm
+torch
+matplotlib
+pyarrow
+pillow
+huggingface_hub

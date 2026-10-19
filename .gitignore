@@ -1,0 +1,6 @@
+data_raw/
+cache/
+__pycache__/
+*.pyc
+godmode-trash/
+train.log
